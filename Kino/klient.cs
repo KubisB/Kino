@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kino
 {
-    class klient
+    public class klient
     {
         public static List<klient> listaKlientow = new List<klient>();
         private int nrKlienta;

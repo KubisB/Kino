@@ -22,12 +22,10 @@ namespace Kino
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedIndex == -1 || comboBox2.SelectedIndex == -1)
-            {
+            if (comboBox1.SelectedIndex == -1 || comboBox2.SelectedIndex == -1){
                 zamykanie = false;
             }
-            else
-            {
+            else{
                 zamykanie = true;
             }
             nowy_seans.Nrseansu = seans.ListaSeansow.Count + 1;
@@ -44,12 +42,34 @@ namespace Kino
                 {
                     nowy_seans.S = s;
                 }
+            }          
+            if (seans.ListaSeansow.Count>0)
+            {
+                foreach (seans se in seans.ListaSeansow)
+                {
+                    if (se.Data_godz.Date == dateTimePicker1.Value.Date || se.S.Nrsali == (int)comboBox2.SelectedItem)
+                    {
+                        foreach (seans s in seans.ListaSeansow)
+                        {
+
+                            if (s.Data_godz.TimeOfDay.TotalMinutes + s.F.Dlugosctrwaniaseansu + 10 > dateTimePicker1.Value.TimeOfDay.TotalMinutes)
+                            {
+                                zamykanie = false;
+                                MessageBox.Show("Nalezy tworzyć seanse w tej samej sali z 10 min przerwą");
+                                comboBox2.SelectedIndex = -1;
+                            }
+                        }
+                    }
+                }
             }
             nowy_seans.Nrseansu = seans.ListaSeansow.Count + 1;
             nowy_seans.Data_godz = dateTimePicker1.Value;
             DialogResult = DialogResult.OK;
-            comboBox1.Items.Clear();
-            comboBox2.Items.Clear();
+            if (zamykanie)
+            {
+                comboBox1.Items.Clear();
+                comboBox2.Items.Clear();
+            }
             Close();
         }
 
@@ -83,14 +103,30 @@ namespace Kino
             {
                 comboBox2.Items.Add(f.Nrsali);
             }
+            if(film.ListaFilmów.Count ==0)
+            {
+                comboBox1.Enabled = false;
+                comboBox2.Enabled = false;
+                dateTimePicker1.Enabled = false;
+                button1.Enabled = false;
+            }
         }
 
         private void comboBox2_SelectedValueChanged(object sender, EventArgs e)
         {
             foreach (Sala f in Sala.ListaSal)
             {
-                if (f.Nrsali == (int)comboBox2.SelectedItem)
-                    label5.Text = f.Iloscmiejsce.ToString();
+                if (comboBox2.SelectedIndex == -1)
+                {
+                    label5.Text = "...";
+                }
+                else
+                {
+                    if (f.Nrsali == (int)comboBox2.SelectedItem)
+                    {
+                        label5.Text = f.Iloscmiejsce.ToString();
+                    }
+                }
             }
         }
     }

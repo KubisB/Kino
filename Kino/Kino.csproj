@@ -61,11 +61,23 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="klient.cs" />
+    <Compile Include="kup_bilet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="kup_bilet.Designer.cs">
+      <DependentUpon>kup_bilet.cs</DependentUpon>
+    </Compile>
     <Compile Include="lista_filmów.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="lista_filmów.Designer.cs">
       <DependentUpon>lista_filmów.cs</DependentUpon>
+    </Compile>
+    <Compile Include="lista_rezerwacji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="lista_rezerwacji.Designer.cs">
+      <DependentUpon>lista_rezerwacji.cs</DependentUpon>
     </Compile>
     <Compile Include="miejsce.cs" />
     <Compile Include="new_film.cs">
@@ -91,8 +103,14 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="kup_bilet.resx">
+      <DependentUpon>kup_bilet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="lista_filmów.resx">
       <DependentUpon>lista_filmów.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lista_rezerwacji.resx">
+      <DependentUpon>lista_rezerwacji.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="new_film.resx">
       <DependentUpon>new_film.cs</DependentUpon>

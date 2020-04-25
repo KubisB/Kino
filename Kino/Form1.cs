@@ -34,12 +34,7 @@ namespace Kino
             Sala.ListaSal.Add(Sala_1);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            foreach(seans s in seans.ListaSeansow)
-            MessageBox.Show(s.S.Obraz);
-            refresh();
-        }
+      
         private void refresh()
         {
             dataGridView1.Rows.Clear();
@@ -93,7 +88,41 @@ namespace Kino
             {
                 return;
             }
+            rezerwacja.ListaRezerwacji.Add(p);
             
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+            lista_rezerwacji lr = new lista_rezerwacji();
+            lr.ShowDialog();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            kup_bilet kup = new kup_bilet();
+            if (kup.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            //if (seans.ListaSeansow.Count > 0)
+            //{
+               // foreach (seans s in seans.ListaSeansow)
+               // {
+               // MessageBox.Show(s.Data_godz.TimeOfDay.TotalMinutes + s.F.Dlugosctrwaniaseansu + 10 == dateTimePicker1.Value.TimeOfDay.TotalMinutes).ToString());
+                //if (s.Data_godz.TimeOfDay.TotalMinutes + s.F.Dlugosctrwaniaseansu + 100 == dateTimePicker1.Value.TimeOfDay.TotalMinutes)
+                //{
+                // zamykanie = false;
+                //  MessageBox.Show("Nalezy tworzyć seanse w tej samej sali z 10 min przerwą");
+                //}
+           // }
+           // }
         }
     }
 }
